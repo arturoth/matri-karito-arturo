@@ -207,7 +207,7 @@ html {
 
 .nav-mobile__menu {
   display: none;
-  background-color: var(--cream) !important;
+  background-color: #7C9151 !important;
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -220,6 +220,7 @@ html {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #7C9151 !important;
 }
 
 @media only screen and (min-width: 800px) {
@@ -246,17 +247,20 @@ html {
 }
 
 .nav-mobile__link {
-  font-size: 1.5rem;
-  font-weight: bolder;
-  margin-bottom: 1.5rem;
-  color: #FFF;
-  font-style: italic;
+  display: inline-block;
   text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 5px;
+  padding: 0 0.5rem;
+  width: 100%;
+  color: #FFF;
   text-decoration: none;
   font-family: 'Montserrat', Arial, sans-serif;
   font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  background: none;
+  border: none;
 }
 
 /* No divider after last link in the menu */
@@ -947,4 +951,28 @@ figcaption {
   .carousel-container { max-width: 98vw; }
   .carousel-track { height: 200px; }
   .carousel-img { max-height: 180px; }
+}
+
+@media (max-width: 800px) {
+  .boarding-pass__actions {
+    flex-direction: column;
+    gap: 0.7rem;
+    align-items: stretch;
+  }
+  .boarding-pass__button {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  .two-columns {
+    display: block;
+    width: 100%;
+  }
+  .column {
+    display: block;
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #7C9151;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+  }
 }
