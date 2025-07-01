@@ -1,7 +1,7 @@
 ---
 draft: false
-when: "Sat 11th Feb 2023, 2:00 PM"
+when: "Sat 11th Nov 2025, 4:00 PM"
 where:
-  first: "Higher Eggbeer Farm"
-  second: "Cheriton Bishop, Nr Exeter, Devon, EX6 6JQ"
+  first: "Catedral Central de La Serena, Gregorio Cordovez 327, La Serena"
+  second: "Avenida Ceres, Parcela 5, Sitio 5, La Serena"
 ---

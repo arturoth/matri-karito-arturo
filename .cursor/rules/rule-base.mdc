@@ -1,0 +1,15 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+---
+description: 
+globs: 
+alwaysApply: false
+---
+- el codigo que generes debe ser lo mas mantenible, legible y reutilizable posible.
+- evita logica duplicada y privilegia funciones pequeñas y claras
+- comenta lo escencial, sin sobrecargar
+- sigue convenciones el lenguaje y del proyecto
+- si hay dudas, prefiere la claridad sobre la "inteligencia"

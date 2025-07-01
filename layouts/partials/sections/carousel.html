@@ -1,0 +1,16 @@
+<section id="carousel" class="carousel-section">
+  {{ $t := .Site.GetPage "/section/carousel" }}
+  <div class="section__svg">
+    {{ partial "svgs/photo-camera-svgrepo-com.svg" . }}
+  </div>
+  <div class="boarding-pass__subtitle">Algunas fotos que nos gustan y queremos compartir con ustedes.</div>
+  <div class="carousel-container">
+    <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#10094;</button>
+    <div class="carousel-track">
+      {{ range $i, $img := $t.Params.gallery }}
+        <img src="{{$img}}" class="carousel-img" style="display: {{ if eq $i 0 }}block{{ else }}none{{ end }};" loading="lazy" />
+      {{ end }}
+    </div>
+    <button class="carousel-btn next" onclick="moveCarousel(1)">&#10095;</button>
+  </div>
+</section> 

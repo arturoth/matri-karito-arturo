@@ -9,8 +9,9 @@
 }
 
 body {
-  background-color: var(--dusty-pink);
-  font-family: var(--main-font);
+  background: #fff;
+  font-family: 'Montserrat', Arial, sans-serif;
+  color: #222;
 
   position: absolute;
   min-width: 100vw;
@@ -35,12 +36,13 @@ html {
 
 /* VARIABLES */
 :root {
-  --main-font: 'Noto Sans', sans-serif;
+  --main-font: 'Montserrat', Arial, sans-serif;
 
   --cream: #FAF2DA;
   --light-green: #8E9775;
   --dark-green: #4A503D;
   --dusty-pink: #E28F83;
+  --mint-green: #ADEBB3;
 }
 
 /* IMAGES - DESKTOP PARALLAX SCROLLING */
@@ -69,24 +71,25 @@ html {
 
 /* HEADING SECTION */
 .header {
-  min-height: 200px;
-  margin-top: 20px;
-  padding-bottom: 5vh;
+  min-height: unset;
+  height: unset;
+  padding: 2.5rem 0 1.5rem 0;
+  margin-top: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: var(--dusty-pink);
+  background-color: #E4E2DD;
   color: var(--cream);
   text-shadow: var(--dark-green) 2px 2px 0px;
   letter-spacing: 2px;
-
-  height: 100vh;
 }
 
 .header-svg {
-  width: auto;
+  max-width: 350px;
+  width: 100%;
   height: auto;
+  margin-bottom: 1rem;
 }
 
 @media only screen and (min-width: 800px) {
@@ -98,6 +101,10 @@ html {
     width: 75%;
     height: 75%;
   }
+}
+
+.header__text, .header__text--light, .header__text--heavy {
+  font-family: 'Playfair Display', 'Montserrat', Arial, sans-serif;
 }
 
 .header__text {
@@ -152,7 +159,7 @@ html {
   height: 80px;
   cursor: pointer;
   transition: all .5s ease-in-out;
-  background-color: var(--dusty-pink);
+  background-color: var(--mint-green);
   border-radius: 50%;
 }
 
@@ -200,7 +207,7 @@ html {
 
 .nav-mobile__menu {
   display: none;
-  background-color: var(--dusty-pink);
+  background-color: var(--cream) !important;
   width: 100vw;
   height: 100vh;
   position: fixed;
@@ -224,7 +231,7 @@ html {
 
     padding: 20px 20%;
     width: 100%;
-    background-color: var(--dusty-pink);
+    background-color: #7C9151;
 
     display: flex;
     flex-direction: row;
@@ -242,12 +249,14 @@ html {
   font-size: 1.5rem;
   font-weight: bolder;
   margin-bottom: 1.5rem;
-  color: var(--cream);
+  color: #FFF;
   font-style: italic;
   text-align: center;
   text-transform: uppercase;
   letter-spacing: 5px;
   text-decoration: none;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 700;
 }
 
 /* No divider after last link in the menu */
@@ -263,8 +272,10 @@ html {
   padding: 0 0.5rem;
   width: -webkit-fill-available;
 
-  color: var(--cream);
+  color: #FFF;
   text-decoration: none;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 700;
 }
 
 .nav-desktop__link:hover {
@@ -278,14 +289,16 @@ html {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
+  background: #FAF2DA;
 }
 
 .scroll-top__button {
   display: inline-block;
   width: 25%;
   height: 25%;
-  ;
   cursor: pointer;
+  background: #FAF2DA;
+  border-radius: 50%;
 }
 
 @media only screen and (min-width: 800px) {
@@ -369,13 +382,23 @@ html {
 }
 
 .section__heading {
-  font-size: 1.5rem;
+  font-family: 'Sacramento', 'Playfair Display', 'Montserrat', Arial, sans-serif;
+  font-size: 2.2rem;
+  font-weight: 400;
   margin-bottom: 1.5rem;
   color: inherit;
-  font-style: italic;
   text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 5px;
+  text-transform: none;
+  letter-spacing: 2px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Sacramento', 'Playfair Display', 'Montserrat', Arial, sans-serif;
+  font-weight: 400;
+}
+
+body, p, li, span, a, .section__md-content {
+  font-family: 'Montserrat', Arial, sans-serif;
 }
 
 .section__subheading {
@@ -398,6 +421,7 @@ html {
   text-align: center;
   color: var(--cream);
   font-size: 75%;
+  background: #C5D0A4;
 }
 
 .footer svg {
@@ -495,4 +519,432 @@ blockquote {
 figcaption {
   text-align: right;
   color: var(--light-green)
+}
+
+/* Cuenta regresiva */
+.countdown-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  background: var(--cream);
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  padding: 1.5rem 2.5rem;
+  margin: 2rem auto 1rem auto;
+  max-width: 600px;
+}
+.countdown-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.countdown-number {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: var(--dusty-pink);
+  margin-bottom: 0.2rem;
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+.countdown-label {
+  font-size: 1rem;
+  color: var(--dark-green);
+  font-family: 'Montserrat', Arial, sans-serif;
+  letter-spacing: 1px;
+}
+.countdown-message {
+  text-align: center;
+  font-size: 1.3rem;
+  color: var(--light-green);
+  margin-top: 1rem;
+  font-weight: 600;
+}
+@media (max-width: 600px) {
+  .countdown-container {
+    gap: 1rem;
+    padding: 1rem 0.5rem;
+  }
+  .countdown-number {
+    font-size: 1.5rem;
+  }
+  .countdown-label {
+    font-size: 0.8rem;
+  }
+}
+
+/* Boarding Pass Frame */
+.boarding-pass {
+  background: #fff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 90%;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+@media (max-width: 600px) {
+  .boarding-pass {
+    margin: 1rem auto;
+    padding: 1.5rem;
+    max-width: 95%;
+  }
+}
+
+.boarding-pass__header {
+  font-family: 'Sacramento', 'Playfair Display', 'Montserrat', Arial, sans-serif;
+  font-size: 2.6rem;
+  font-weight: 400;
+  text-align: center;
+  color: #E28F83;
+  letter-spacing: 2px;
+  margin-bottom: 1.2rem;
+}
+
+.boarding-pass__subtitle {
+  font-family: 'Montserrat', Arial, sans-serif;
+  text-align: center;
+  color: #8E9775;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.boarding-pass__divider {
+  border: none;
+  border-top: 2px dashed #7C9151;
+  margin: 1.5rem 0;
+}
+
+.boarding-pass__section {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.boarding-pass__label {
+  display: block;
+  margin-bottom: 0.2em;
+  font-size: 0.98rem;
+  color: #8E9775;
+  letter-spacing: 1px;
+  white-space: pre-line;
+}
+
+.boarding-pass__value {
+  color: #E28F83;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.boarding-pass__button {
+  display: inline-block;
+  background: #7C9151;
+  color: #fff;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 1.5rem;
+  padding: 0.8rem 2.2rem;
+  margin-top: 1.5rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(173, 235, 179, 0.15);
+  transition: background 0.2s, color 0.2s;
+}
+
+.boarding-pass__button:hover {
+  background: #E28F83;
+  color: #fff;
+}
+
+/* Ajustes para countdown dentro del boarding pass */
+.boarding-pass .countdown-container {
+  background: #F8F8F8;
+  border-radius: 1rem;
+  box-shadow: none;
+  border: 1.5px solid #7C9151;
+  padding: 1rem 0.5rem;
+  margin: 1.5rem auto 0.5rem auto;
+  max-width: 100%;
+}
+
+.boarding-pass .countdown-number {
+  color: #E28F83;
+  font-size: 2.2rem;
+}
+
+.boarding-pass .countdown-label {
+  color: #8E9775;
+  font-size: 0.95rem;
+}
+
+.boarding-pass .countdown-message {
+  color: #8E9775;
+  font-size: 1.1rem;
+  margin-top: 0.7rem;
+}
+
+.boarding-pass__actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.boarding-pass__event {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: #F8F8F8;
+  border-radius: 1.2rem;
+  box-shadow: 0 2px 8px rgba(173, 235, 179, 0.10);
+  padding: 1.2rem 1rem 1rem 1rem;
+  margin-bottom: 1.2rem;
+  text-align: center;
+  border: 1.5px solid #7C9151;
+}
+
+.boarding-pass__event-title {
+  font-family: 'Sacramento', 'Playfair Display', 'Montserrat', Arial, sans-serif;
+  color: #E28F83;
+  font-size: 2rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+  margin-bottom: 0.3rem;
+  text-transform: none;
+  width: 100%;
+  word-break: break-word;
+  text-align: center;
+}
+
+.boarding-pass__event-place, .boarding-pass__event-address {
+  font-family: 'Montserrat', Arial, sans-serif;
+  color: #4A503D;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.2rem;
+  width: 100%;
+  word-break: break-word;
+  text-align: center;
+}
+
+.boarding-pass__event-link {
+  font-family: 'Montserrat', Arial, sans-serif;
+  display: inline-block;
+  background: #7C9151;
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 1.2rem;
+  padding: 0.5rem 1.5rem;
+  text-decoration: none;
+  margin-top: 0.3rem;
+  box-shadow: 0 1px 4px rgba(173, 235, 179, 0.10);
+  transition: background 0.2s, color 0.2s;
+  letter-spacing: 1px;
+  width: 100%;
+  word-break: break-word;
+  text-align: center;
+}
+
+.boarding-pass__event-link:hover {
+  background: #E28F83;
+  color: #fff;
+}
+
+.boarding-pass__divider--event {
+  border-top: 1.5px dashed #E4E2DD;
+  margin: 1.2rem 0;
+}
+
+.boarding-pass__events-row {
+  display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: center;
+  align-items: stretch;
+  margin-bottom: 1.5rem;
+}
+
+@media (max-width: 700px) {
+  .boarding-pass__events-row {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+.boarding-pass, .boarding-pass__subtitle, .boarding-pass .countdown-container, .boarding-pass .countdown-item, .boarding-pass .countdown-number, .boarding-pass .countdown-label, .boarding-pass .countdown-message {
+  font-family: 'Montserrat', Arial, sans-serif !important;
+}
+
+.section--svg-full {
+  width: 100vw;
+  max-width: 100vw;
+  margin: 0 auto;
+  padding: 0;
+  background: #E4E2DD;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section--svg-full svg {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* TWO COLUMNS LAYOUT */
+.two-columns {
+    display: table;
+    width: 100%;
+    margin-top: 2rem;
+    border-collapse: collapse;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos específicos para el boarding-pass en la sección de location */
+#location .boarding-pass {
+    max-width: 95%;
+    width: 100%;
+    padding: 2.5rem;
+    margin: 2rem auto;
+}
+
+#location .boarding-pass .two-columns {
+    margin: 2rem 0 0 0;
+    width: 100%;
+}
+
+@media (max-width: 800px) {
+    #location .boarding-pass {
+        max-width: 98%;
+        padding: 1.5rem;
+        margin: 1rem auto;
+    }
+    
+    #location .boarding-pass .two-columns {
+        margin: 1.5rem 0 0 0;
+    }
+}
+
+.column {
+    display: table-cell;
+    width: 50%;
+    padding: 1.5rem;
+    vertical-align: top;
+    border: 1px solid #7C9151;
+    background-color: #fafafa;
+}
+
+.column:first-child {
+    border-right: 1px solid #7C9151;
+}
+
+.column h3 {
+    color: #7C9151;
+    margin-bottom: 1rem;
+    font-family: 'Sacramento', 'Playfair Display', 'Montserrat', Arial, sans-serif;
+    font-size: 1.5rem;
+    text-align: center;
+    border-bottom: 2px solid #7C9151;
+    padding-bottom: 0.5rem;
+}
+
+.column p {
+    color: var(--dark-green);
+    line-height: 1.6;
+    text-align: center;
+    margin: 0;
+}
+
+@media only screen and (max-width: 800px) {
+    .two-columns {
+        display: block;
+        width: 100%;
+    }
+    
+    .column {
+        display: block;
+        width: 100%;
+        padding: 1rem;
+        border: 1px solid #7C9151;
+        margin-bottom: 1rem;
+    }
+    
+    .column:first-child {
+        border-right: 1px solid #7C9151;
+        margin-bottom: 0;
+    }
+    
+    .column h3 {
+        font-size: 1.3rem;
+    }
+}
+
+/* Carrusel de galería */
+.carousel-section {
+  width: 100%;
+  margin: 2rem auto;
+  text-align: center;
+}
+.carousel-container {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+.carousel-track {
+  width: 100%;
+  height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.carousel-img {
+  max-width: 100%;
+  max-height: 340px;
+  border-radius: 12px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transition: opacity 0.5s;
+}
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #7C9151;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 2rem;
+  cursor: pointer;
+  z-index: 2;
+  opacity: 0.8;
+}
+.carousel-btn.prev { left: 10px; }
+.carousel-btn.next { right: 10px; }
+.carousel-btn:hover { background: #5a6b3a; }
+@media (max-width: 700px) {
+  .carousel-container { max-width: 98vw; }
+  .carousel-track { height: 200px; }
+  .carousel-img { max-height: 180px; }
 }

@@ -11,10 +11,14 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&family=Noto+Serif&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Sacramento&display=swap" rel="stylesheet">
         {{ block "dynamic_styles" . -}}{{- end }}
     </head>
     <body id="top">
         {{ block "main" . -}}{{- end }}
         <script src="{{ .Site.BaseURL }}/js/script.js"></script>
+        <script src="{{ .Site.BaseURL }}/js/carousel.js"></script>
     </body>
 </html>

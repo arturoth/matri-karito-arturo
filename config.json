@@ -1,7 +1,12 @@
 {
   "baseURL": "https://SarahFrench.github.io/wedding-website",
   "languageCode": "en-us",
-  "title": "Sarah & Hugo's Wedding",
+  "title": "Karen & Arturo",
+  "date": "2025-12-20T16:00:00",
+  "location": "Avenida Ceres, Parcela 5, Sitio 5, Santiago, Chile",
+  "dresscode": "Formal elegante",
+  "gift_code": "12345678 – Banco Cencosud – Karen & Arturo",
+  "map_link": "https://maps.app.goo.gl/1gmSACWbZexiaUmP7",
   "show_comments": false,
   "disableKinds": [
     "sitemap",

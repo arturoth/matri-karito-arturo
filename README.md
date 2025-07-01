@@ -1,34 +1,65 @@
-# Wedding Website - Status = Hitched! 📨
+# Wedding Website
 
-<p align="center">
-<img src="https://user-images.githubusercontent.com/15078782/150659777-bf20ca44-136e-4122-82ba-bbccc8a7e034.gif">
-</p>
+> **Nota:** Este proyecto es un fork de un repositorio original y ha sido adaptado con cambios propios para ajustarse a las necesidades del evento y preferencias personales.
 
-If you're reading this- hello! I didn't want to spend money on Squarespace/Wix/etc to make a website for my wedding guests, so here it is deployed on GitHub Pages.
+Este proyecto es un sitio web para bodas construido con [Hugo](https://gohugo.io/). Permite personalizar fácilmente la información y el diseño para adaptarse a cualquier evento, con un enfoque en la mantenibilidad y la edición sencilla de contenido.
 
-The man I'm marrying is called Hugo, and the framework used to make the site is also called [Hugo](https://gohugo.io/), ain't that fun.
+## ¿Cómo funciona?
 
-## Inspiration
+El sitio está estructurado para que puedas modificar tanto el contenido como la presentación de manera simple:
 
-I took heavy inspiration from [this Wix template](https://www.wix.com/website-template/view/html/1883). I copied the UI (parallax, nav positioning) and made my own version of the round header image using [Affinity Designer](https://affinity.serif.com/en-gb/designer/) using a [colour palette I found](https://colorhunt.co/palette/faf2da8e97754a503de28f83).
+- **Contenido**: Se encuentra en la carpeta `content/section/` y otras subcarpetas de `content/`. Aquí puedes editar los archivos `.md` para cambiar textos, títulos, descripciones y datos de cada sección del sitio (por ejemplo, dress code, ubicación, regalos, etc.).
+- **Presentación**: Se maneja principalmente desde la carpeta `layouts/partials/`, donde están los componentes reutilizables (partials) y los fragmentos de sección.
 
- No HTML/CSS code was copied from that template- I wrote everything here (that'll be apparent when you see the mess that is my CSS).
+## Estructura relevante
 
-## Tools
+- `content/section/` — Archivos Markdown con la información de cada sección principal del sitio.
+- `layouts/partials/sections/` — Partials específicos para renderizar secciones como el carrusel, travel, etc.
+- `layouts/partials/shared/` — Partials reutilizables como el header, footer, navegación, etc.
+- `layouts/partials/homepage/main.html` — Estructura principal de la página de inicio, donde se incluyen y organizan los partials y secciones.
+- `static/css/style.css` — Hoja de estilos principal para personalizar la apariencia.
 
-I used [Hugo](https://gohugo.io/) to build the site even though it's just a single page because
-1) It means I can edit the HTML in partials and have easier to understand commits
-2) By generating the HTML from config and markdown files I can let non-devs, i.e. my fiance, edit the sites content easily without needing to set up a CMS for a _single page_ of content.
+## ¿Cómo modificar el contenido?
 
-I wish I used SCSS but I've already started making the CSS and I promised myself that I'd not get caught up in unnecessary bells and whistles at the expense of not making the website quickly.
+1. **Editar textos y datos**:
+   - Ve a la carpeta `content/section/` y abre el archivo correspondiente (por ejemplo, `dress.md`, `location.md`, `gifts.md`).
+   - Modifica los campos YAML (títulos, subtítulos, descripciones, etc.) o el contenido Markdown según lo que quieras mostrar.
+   - Puedes agregar saltos de línea, negritas y otros elementos Markdown.
 
-## Deployment
+2. **Agregar o modificar secciones**:
+   - Para agregar una nueva sección, crea un nuevo archivo `.md` en `content/section/` y un partial correspondiente en `layouts/partials/sections/` si necesitas un diseño especial.
+   - Para modificar la estructura visual de una sección, edita el partial correspondiente en `layouts/partials/sections/` o en `layouts/partials/homepage/main.html`.
 
-This repo is deployed using GitHub Actions free tier and the [instructions in this guide](https://gohugo.io/hosting-and-deployment/hosting-on-github/).
+3. **Modificar componentes globales**:
+   - El header, footer y navegación están en `layouts/partials/shared/`.
+   - Los SVGs y otros recursos visuales están en `layouts/partials/svgs/`.
 
-The GitHub Action runs the `hugo --minify` command to generate the static pages of the site, and then it commit them to the root directory in the `gh_pages` branch. This branch (& the root dir) is the source for the GitHub Pages deployment.
+## Ejemplo de flujo de edición
 
-## Tutorials/Resources Used
+- Quieres cambiar la dirección de la ceremonia:
+  1. Edita el archivo `content/section/location.md` y actualiza el campo `address`.
+  2. Si necesitas cambiar cómo se muestra, edita el partial correspondiente en `layouts/partials/homepage/main.html`.
 
-- [W3 Schools - How TO - Parallax Scrolling](https://www.w3schools.com/howto/howto_css_parallax.asp)
-- [Animated Hamburger Menu Tutorial - CSS Effects](https://www.youtube.com/watch?v=dIyVTjJAkLw)
+- Quieres agregar una nueva sección de fotos:
+  1. Crea `content/section/photos.md` con el contenido.
+  2. Crea un partial en `layouts/partials/sections/photos.html` si necesitas un diseño especial.
+  3. Incluye el partial en `main.html` donde corresponda.
+
+## Despliegue
+
+El sitio se puede desplegar fácilmente usando [Hugo](https://gohugo.io/) y GitHub Pages. Solo ejecuta:
+
+```bash
+hugo --minify
+```
+
+Y sube el contenido de la carpeta `public/` a tu hosting estático preferido.
+
+## Créditos y recursos
+
+- Basado en Hugo y personalizaciones propias.
+- Inspiración visual de plantillas de Wix y paletas de color de ColorHunt.
+
+---
+
+Para dudas o mejoras, revisa los archivos en `layouts/partials/` y `content/section/` para entender cómo se conectan las piezas.

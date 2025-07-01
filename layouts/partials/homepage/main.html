@@ -1,129 +1,364 @@
 <main>
-    <div class="image image1"></div>
-
 
     <section id="when" class="section light">
-        <div class="section__svg">
-            {{ partial "svgs/leaf.svg" . }}
-        </div>
-        <h1 class="section__heading">The Wedding</h1>
-        <section class="section__split">
-            <div>
-                <p class="section__subheading">When</p>
-                <p class="section__text--bold">
-                    {{ .Params.when }}
-                </p>
+        <div class="boarding-pass">
+        <div class="boarding-pass__header">Invitación a nuestro<br><strong>Matrimonio</strong></div>
+        <div class="boarding-pass__subtitle">¡Te esperamos para celebrar juntos!</div>
+        <hr class="boarding-pass__divider" />
+        <div class="boarding-pass__section">
+            <span class="boarding-pass__label">Cuenta regresiva</span>
+            <div class="countdown-container">
+            <div class="countdown-item">
+                <span id="countdown-days" class="countdown-number">0</span>
+                <span class="countdown-label">días</span>
             </div>
-            <div>
-                <p class="section__subheading">Where</p>
-                <p class="section__text--bold">
-                    {{ .Params.where.first }}
-                </p>
-                <p>
-                    {{ .Params.where.second }}
-                </p>
+            <div class="countdown-item">
+                <span id="countdown-hours" class="countdown-number">0</span>
+                <span class="countdown-label">horas</span>
             </div>
-        </section>
-        <!-- My CSS in this project is bad, man -->
-        <section style="display:flex;flex-direction:column;align-items:center;">
-            <h2 style="margin-top:2rem;" class="section__heading">Speeches</h2>
-
-            <h3 style="margin-top:2rem;" class="section__heading">Father of Bride</h3>
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/XfCBomxy7K8"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
-
-            <h3 style="margin-top:2rem;" class="section__heading">Best Man</h3>
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/JzArXpZgaOs"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
-
-            <h3 style="margin-top:2rem;" class="section__heading">Groom</h3>
-            <iframe width="100%" height="315" src="https://www.youtube.com/embed/NPhbs9SEmVc"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                allowfullscreen></iframe>
-
-        </section>
-    </section>
-
-    <div class="image image2"></div>
-
-
-    <section id="order-of-events" class="section light">
-        <div class="section__svg">
-            {{ partial "svgs/leaves.svg" . }}
+            <div class="countdown-item">
+                <span id="countdown-minutes" class="countdown-number">0</span>
+                <span class="countdown-label">minutos</span>
+            </div>
+            <div class="countdown-item">
+                <span id="countdown-seconds" class="countdown-number">0</span>
+                <span class="countdown-label">segundos</span>
+            </div>
+            </div>
+            <div id="countdown-message" class="countdown-message"></div>
         </div>
-
-        {{ $t := .Site.GetPage "/section/order-of-events" }}
-        <h1 class="section__heading">{{$t.Params.title}}</h1>
-        <section class="section__md-content">
-            {{ $t.Content }}
-        </section>
-    </section>
-
-    <div class="image image3"></div>
-
-    <section id="travel-accommodation" class="section light">
-        <div class="section__svg">
-            {{ partial "svgs/leaf.svg" . }}
+        <div class="boarding-pass__events-row">
+            <div class="boarding-pass__section boarding-pass__event">
+            <div class="boarding-pass__event-title">Ceremonia Religiosa</div>
+            <div class="header__text header__text--light">Inicia a las 16 horas</div>
+            <a class="boarding-pass__event-link" href="#location">VER UBICACIÓN</a>
+            </div>
+            <div class="boarding-pass__section boarding-pass__event">
+            <div class="boarding-pass__event-title">Recepción y Celebración</div>
+            <div class="header__text header__text--light">Inicia a las 19 horas</div>
+            <a class="boarding-pass__event-link" href="#location">VER UBICACIÓN</a>
+            </div>
         </div>
+        <hr class="boarding-pass__divider" />
+        <div class="boarding-pass__actions">
+            <button class="boarding-pass__button" onclick="window.location.href='#gifts'">VER LISTA DE NOVIOS</button>
+            <button class="boarding-pass__button" onclick="window.location.href='https://forms.gle/tq26vrFgsdq8mTQ97'">CONFIRMA ASISTENCIA</button>
+        </div>
+        <script>
+            const targetDate = new Date("2025-11-08T16:00:00-04:00").getTime();
+            const daysEl = document.getElementById("countdown-days");
+            const hoursEl = document.getElementById("countdown-hours");
+            const minsEl = document.getElementById("countdown-minutes");
+            const secsEl = document.getElementById("countdown-seconds");
+            const messageEl = document.getElementById("countdown-message");
 
-        {{ $t := .Site.GetPage "/section/travel-accommodation" }}
-        <h1 class="section__heading">{{$t.Params.title}}</h1>
-        <section class="section__md-content">
-            {{ $t.Content }}
-        </section>
+            function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                messageEl.innerHTML = "¡Ya comenzó la celebración! 🎉";
+                daysEl.textContent = hoursEl.textContent = minsEl.textContent = secsEl.textContent = "0";
+                clearInterval(interval);
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hrs = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const mins = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const secs = Math.floor((distance % (1000 * 60)) / 1000);
+
+            daysEl.textContent = days;
+            hoursEl.textContent = hrs;
+            minsEl.textContent = mins;
+            secsEl.textContent = secs;
+            messageEl.textContent = "";
+            }
+
+            updateCountdown();
+            const interval = setInterval(updateCountdown, 1000);
+        </script>
+        </div>
     </section>
 
-    <div class="image image1"></div>
+    <!-- div class="image image3"></div -->
+
+    <section id="order-of-events" class="section section--svg-full">
+      {{ partial "svgs/wedding-places.svg" . }}
+    </section>
+
+    <section id="location" class="section light">
+        {{ $t := .Site.GetPage "/section/location" }}
+        <div class="boarding-pass">
+            <div class="boarding-pass__header">{{$t.Params.title}}</div>
+            <div class="section__svg">
+                {{ partial "svgs/chapel-svgrepo-com.svg" . }}
+            </div>
+            <div class="two-columns">
+                <div class="column">
+                    <div class="boarding-pass__header">{{$t.Params.where.first.title}}</div>
+                    <center>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3458.657028364187!2d-71.25377422364629!3d-29.90298157499517!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9691ca7a7d7b68a7%3A0xe48556c2d34f43b8!2sCatedral%20de%20La%20Serena!5e0!3m2!1ses-419!2scl!4v1750808479653!5m2!1ses-419!2scl" width="500" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </center>
+                    <hr class="boarding-pass__divider" />
+                    <div class="boarding-pass__event-title"><strong>{{$t.Params.where.first.subtitle}}</strong></div>
+                    <center>
+                        <strong>Dirección</strong>
+                        <span class="boarding-pass__label">{{ replace $t.Params.where.first.address "\n" "<br>" | safeHTML }}</span>
+                        <strong>¿Cómo llegar?</strong>
+                        <span class="boarding-pass__label">{{ replace $t.Params.where.first.howto "\n" "<br>" | safeHTML }}</span>
+                        <strong>¿Donde estacionar?</strong>
+                        <span class="boarding-pass__label">{{ replace $t.Params.where.first.parking "\n" "<br>" | safeHTML }}</span>
+                    </center>
+                </div>
+                <div class="column">
+                    <div class="boarding-pass__header">{{$t.Params.where.second.title}}</div>
+                    <center>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3457.5468270398287!2d-71.20035299999999!3d-29.934945999999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjnCsDU2JzA1LjgiUyA3McKwMTInMDEuMyJX!5e0!3m2!1ses-419!2scl!4v1750808431653!5m2!1ses-419!2scl" width="500" height="350" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </center>
+                    <hr class="boarding-pass__divider" />
+                    <div class="boarding-pass__event-title"><strong>{{$t.Params.where.second.subtitle}}</strong></div>
+                    <center>
+                        <strong>Dirección</strong>
+                        <span class="boarding-pass__label">{{ replace $t.Params.where.second.address "\n" "<br>" | safeHTML }}</span>
+                        <strong>¿Cómo llegar?</strong>
+                        <span class="boarding-pass__label">{{ replace $t.Params.where.second.howto "\n" "<br>" | safeHTML }}</span>
+                        <strong>¿Donde estacionar?</strong>
+                        <span class="boarding-pass__label">{{ replace $t.Params.where.first.parking "\n" "<br>" | safeHTML }}</span>
+                    </center>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section id="dress" class="section light">
-        <div class="section__svg">
-            {{ partial "svgs/leaf.svg" . }}
-        </div>
-
         {{ $t := .Site.GetPage "/section/dress" }}
-        <h1 class="section__heading">{{$t.Params.title}}</h1>
-        <section class="section__md-content">
-            {{ $t.Content }}
-        </section>
+        <div class="boarding-pass">
+            <div class="boarding-pass__header">Dress code</div>
+            <div class="section__svg">
+                {{ partial "svgs/dress-svgrepo-com.svg" . }}
+            </div>
+            <div class="boarding-pass__event-title"><strong>{{$t.Params.advisor}}</strong></div>
+            <div class="boarding-pass__subtitle">{{ $t.Content }}</div>
+            <hr class="boarding-pass__divider" />
+            <div class="boarding-pass__event-title"><strong>{{$t.Params.dress}}</strong></div>
+            <div class="boarding-pass__subtitle">{{ $t.Params.description }}</div>
+            <div class="two-columns">
+                <div class="column">
+                    <div class="boarding-pass__header">{{$t.Params.which.girl.title}}</div>
+                    <img src="https://i.ibb.co/RGZj8mXg/8284cb1066705328ac3bafa40001155b52d472a74c0f07ec161e0b84000fe920.png" alt="Mujer con vestido largo boho chic" style="width:100%; height:auto; border-radius:8px;" />
+                    
+                    <div class="boarding-pass__event-title"><strong>{{$t.Params.which.girl.subtitle}}</strong></div>
+                    <center>
+                        <strong>¿Qué usar?</strong>
+                        <span class="boarding-pass__label">{{ replace $t.Params.which.girl.desc "\n" "<br>" | safeHTML }}</span>
+                        <strong>Referencias</strong>
+                        <span class="boarding-pass__label">{{ replace $t.Params.which.girl.refs "\n" "<br>" | safeHTML }}</span>
+                    </center>
+                </div>
+                <div class="column">
+                    <div class="boarding-pass__header">{{$t.Params.which.man.title}}</div>
+                    <img src="https://i.ibb.co/gbLJf9rx/fbeef3a83e94936ec1f6618ad161383df60073d51698b4ceb498576809aee8cb.png" alt="Hombre con estilo boho chic" style="width:100%; height:auto; border-radius:8px;" />
+                    <div class="boarding-pass__event-title"><strong>{{$t.Params.which.man.subtitle}}</strong></div>
+                    <center>
+                        <strong>¿Qué usar?</strong>
+                        <span class="boarding-pass__label">{{ replace $t.Params.which.man.desc "\n" "<br>" | safeHTML }}</span>
+                        <strong>Referencias</strong>
+                        <span class="boarding-pass__label">{{ replace $t.Params.which.man.refs "\n" "<br>" | safeHTML }}</span>
+                    </center>
+                </div>
+            </div>
+        </div>
     </section>
-    <section id="facilities-accessibility" class="section light">
-        {{ $t := .Site.GetPage "/section/facilities-accessibility" }}
-        <h1 class="section__heading">{{$t.Params.title}}</h1>
-        <section class="section__md-content">
-            {{ $t.Content }}
-        </section>
-    </section>
+
     <section id="gifts" class="section light">
         {{ $t := .Site.GetPage "/section/gifts" }}
-        <h1 class="section__heading">{{$t.Params.title}}</h1>
-        <section class="section__md-content">
-            {{ $t.Content }}
-        </section>
+        <div class="boarding-pass">
+            <div class="boarding-pass__header">Obsequios de boda</div>
+            <div class="section__svg">
+                {{ partial "svgs/gift-svgrepo-com.svg" . }}
+            </div>
+            <div class="boarding-pass__event-title"><strong>{{$t.Params.advisor}}</strong></div>
+            <div class="boarding-pass__subtitle">{{ $t.Content }}</div>
+            <hr class="boarding-pass__divider" />
+            <div class="boarding-pass__actions">
+                <button class="boarding-pass__button" onclick="showBankModal()">VER DATOS BANCARIOS</button>
+                <button class="boarding-pass__button" onclick="window.open('https://www.noviosparis.cl/home/search-couple/ibanez%20aguayo', '_blank')">VER LISTA NOVIOS PARIS</button>
+            </div>
+        </div>
     </section>
 
-    <div class="image image2"></div>
-
-    <section id="more" class="section light" style="text-align:center;">
-        <div class="section__svg">
-            {{ partial "svgs/leaf.svg" . }}
+    <!-- Modal para datos bancarios -->
+    <div id="bankModal" class="modal">
+        {{ $t := .Site.GetPage "/section/bankAccount" }}
+        <div class="modal-content">
+            <span class="close" onclick="closeBankModal()">&times;</span>
+            <h2>{{$t.Params.title}}</h2>
+            <div class="bank-info">
+                <p><strong>Cuenta:</strong></p>
+                <div class="copy-container">
+                    <span id="bankAccount" class="copy-text">
+                        {{ replace $t.Params.banking "\n" "<br>" | safeHTML }}
+                    </span>
+                    <button onclick="copyBankAccount()" class="copy-btn">Copiar</button>
+                </div>
+            </div>
+            <div class="modal-actions">
+                <button class="boarding-pass__button" onclick="closeBankModal()">Cerrar</button>
+            </div>
         </div>
-        <p style="margin-bottom:1em;">Thank you for visiting our website!</p>
-        <p style="margin-bottom:1em;">We cannot wait to share this special day with you, and have all our loved ones
-            under one roof for the first time in FOREVER!</p>
-        <p style="margin-bottom:1em;">In the meantime, if you have any questions you can contact us both at <a
-                href="mailto:hugoandsarah2023@gmail.com">HugoAndSarah2023@gmail.com</a></p>
+    </div>
 
-        <p style="margin-top:2em;margin-bottom:1em;">*</p>
-        <p style="margin-bottom:1em;">Also, did you know the invitation is made of recycled paper and wild flower seeds,
-            and can be planted?</p>
-        <p style="margin-bottom:1em;">To plant your invitation, <a href="/plant">see instructions here</a>
-        </p>
-        </p>
+    <style>
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.5);
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 90%;
+        max-width: 500px;
+        border-radius: 10px;
+        position: relative;
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    .bank-info {
+        margin: 20px 0;
+    }
+
+    .copy-container {
+        display: flex;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .copy-container input {
+        flex: 1;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-family: monospace;
+        background-color: #f9f9f9;
+    }
+
+    .copy-btn {
+        background: #7C9151;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-family: 'Montserrat', Arial, sans-serif;
+    }
+
+    .copy-btn:hover {
+        background: #6a7f45;
+    }
+
+    .modal-actions {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    @media (max-width: 600px) {
+        .modal-content {
+            margin: 10% auto;
+            width: 95%;
+        }
+        
+        .copy-container {
+            flex-direction: column;
+        }
+    }
+    </style>
+
+    <script>
+    function showBankModal() {
+        document.getElementById('bankModal').style.display = 'block';
+    }
+
+    function closeBankModal() {
+        document.getElementById('bankModal').style.display = 'none';
+    }
+
+    function copyBankAccount() {
+        const text = document.getElementById('bankAccount').innerText;
+        navigator.clipboard.writeText(text).then(() => {
+            const btn = document.querySelector('.copy-btn');
+            const original = btn.textContent;
+            btn.textContent = '¡Copiado!';
+            btn.style.background = '#4CAF50';
+            setTimeout(() => {
+                btn.textContent = original;
+                btn.style.background = '#7C9151';
+            }, 2000);
+        });
+    }
+
+    // Cerrar modal al hacer clic fuera de él
+    window.onclick = function(event) {
+        const modal = document.getElementById('bankModal');
+        if (event.target == modal) {
+            closeBankModal();
+        }
+    }
+    </script>
+
+    <section id="facilities-accessibility" class="section light">
+        {{ $t := .Site.GetPage "/section/facilities-accessibility" }}
+        <div class="boarding-pass">
+            <div class="boarding-pass__header">{{$t.Params.title}}</div>
+            <div class="section__svg">
+                {{ partial "svgs/love-birds-svgrepo-com.svg" . }}
+            </div>
+            <div class="boarding-pass__subtitle">{{ $t.Content }}</div>
+            <hr class="boarding-pass__divider" />
+        </div>
+    </section>
+
+    <section id="history" class="section light">
+        {{ $t := .Site.GetPage "/section/history" }}
+        <div class="boarding-pass">
+            <div class="boarding-pass__header">{{$t.Params.title}}</div>
+            <div class="section__svg">
+                {{ partial "svgs/turntable-svgrepo-com.svg" . }}
+            </div>
+            <div class="boarding-pass__subtitle">{{ $t.Content }}</div>
+            <hr class="boarding-pass__divider" />
+        </div>
+    </section>
+    
+    <section id="carousel" class="section light">
+        {{ $t := .Site.GetPage "/section/carousel" }}
+        <div class="boarding-pass">
+            <div class="boarding-pass__header">{{$t.Params.title}}</div>
+            {{ partial "sections/carousel.html" . }}
+        </div>
     </section>
 
     <div class="scroll-top">
