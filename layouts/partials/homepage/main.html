@@ -104,12 +104,12 @@
                     <div class="boarding-pass__event-title"><strong>{{$t.Params.where.first.subtitle}}</strong></div>
                     <center>
                         <strong>Dirección</strong>
-                        <span class="boarding-pass__label">{{ replace $t.Params.where.first.address "\n" "<br>" | safeHTML }}</span>
+                        <span class="boarding-pass__label"><a href="{{$t.Params.where.first.url}}" target="_blank">📍 {{ replace $t.Params.where.first.address "\n" "<br>" | safeHTML }}</a></strong></span>
                         <strong>¿Cómo llegar?</strong>
                         <span class="boarding-pass__label">{{ replace $t.Params.where.first.howto "\n" "<br>" | safeHTML }}</span>
                         <strong>¿Donde estacionar?</strong>
                         <span class="boarding-pass__label">{{ replace $t.Params.where.first.parking "\n" "<br>" | safeHTML }}</span>
-                    </center>
+                    </center>                    
                 </div>
                 <div class="column">
                     <div class="boarding-pass__header">{{$t.Params.where.second.title}}</div>
@@ -120,7 +120,7 @@
                     <div class="boarding-pass__event-title"><strong>{{$t.Params.where.second.subtitle}}</strong></div>
                     <center>
                         <strong>Dirección</strong>
-                        <span class="boarding-pass__label">{{ replace $t.Params.where.second.address "\n" "<br>" | safeHTML }}</span>
+                        <span class="boarding-pass__label"><a href="{{$t.Params.where.second.url}}" target="_blank">📍 {{ replace $t.Params.where.second.address "\n" "<br>" | safeHTML }}</a></strong></span>
                         <strong>¿Cómo llegar?</strong>
                         <span class="boarding-pass__label">{{ replace $t.Params.where.second.howto "\n" "<br>" | safeHTML }}</span>
                         <strong>¿Donde estacionar?</strong>
@@ -130,6 +130,8 @@
             </div>
         </div>
     </section>
+
+    <div class="image image1"></div>
 
     <section id="dress" class="section light">
         {{ $t := .Site.GetPage "/section/dress" }}
@@ -141,31 +143,38 @@
             <div class="boarding-pass__event-title"><strong>{{$t.Params.advisor}}</strong></div>
             <div class="boarding-pass__subtitle">{{ $t.Content }}</div>
             <hr class="boarding-pass__divider" />
-            <div class="boarding-pass__event-title"><strong>{{$t.Params.dress}}</strong></div>
-            <div class="boarding-pass__subtitle">{{ $t.Params.description }}</div>
-            <div class="two-columns">
-                <div class="column">
-                    <div class="boarding-pass__header">{{$t.Params.which.girl.title}}</div>
-                    <img src="https://i.ibb.co/RGZj8mXg/8284cb1066705328ac3bafa40001155b52d472a74c0f07ec161e0b84000fe920.png" alt="Mujer con vestido largo boho chic" style="width:100%; height:auto; border-radius:8px;" />
-                    
-                    <div class="boarding-pass__event-title"><strong>{{$t.Params.which.girl.subtitle}}</strong></div>
-                    <center>
-                        <strong>¿Qué usar?</strong>
-                        <span class="boarding-pass__label">{{ replace $t.Params.which.girl.desc "\n" "<br>" | safeHTML }}</span>
-                        <strong>Referencias</strong>
-                        <span class="boarding-pass__label">{{ replace $t.Params.which.girl.refs "\n" "<br>" | safeHTML }}</span>
-                    </center>
-                </div>
-                <div class="column">
-                    <div class="boarding-pass__header">{{$t.Params.which.man.title}}</div>
-                    <img src="https://i.ibb.co/gbLJf9rx/fbeef3a83e94936ec1f6618ad161383df60073d51698b4ceb498576809aee8cb.png" alt="Hombre con estilo boho chic" style="width:100%; height:auto; border-radius:8px;" />
-                    <div class="boarding-pass__event-title"><strong>{{$t.Params.which.man.subtitle}}</strong></div>
-                    <center>
-                        <strong>¿Qué usar?</strong>
-                        <span class="boarding-pass__label">{{ replace $t.Params.which.man.desc "\n" "<br>" | safeHTML }}</span>
-                        <strong>Referencias</strong>
-                        <span class="boarding-pass__label">{{ replace $t.Params.which.man.refs "\n" "<br>" | safeHTML }}</span>
-                    </center>
+            <center>
+                <button id="toggle-dresscode" class="boarding-pass__button" onclick="toggleDressCode()">
+                    ¿Quieres saber más?
+                </button>
+            </center>
+            <div id="dresscode-details" style="display:none; margin-top:1.5rem;">                
+                <div class="boarding-pass__header">Nuestra recomendación</div>
+                <div class="boarding-pass__event-title"><strong>{{$t.Params.dress}}</strong></div>
+                <div class="boarding-pass__subtitle">{{ $t.Params.description }}</div>
+                <div class="two-columns">
+                    <div class="column">
+                        <div class="boarding-pass__header">{{$t.Params.which.girl.title}}</div>
+                        <img src="https://i.ibb.co/RGZj8mXg/8284cb1066705328ac3bafa40001155b52d472a74c0f07ec161e0b84000fe920.png" alt="Mujer con vestido largo boho chic" style="width:100%; height:auto; border-radius:8px;" />
+                        <div class="boarding-pass__event-title"><strong>{{$t.Params.which.girl.subtitle}}</strong></div>
+                        <center>
+                            <strong>¿Qué usar?</strong>
+                            <span class="boarding-pass__label">{{ replace $t.Params.which.girl.desc "\n" "<br>" | safeHTML }}</span>
+                            <strong>Referencias</strong>
+                            <span class="boarding-pass__label">{{ replace $t.Params.which.girl.refs "\n" "<br>" | safeHTML }}</span>
+                        </center>
+                    </div>
+                    <div class="column">
+                        <div class="boarding-pass__header">{{$t.Params.which.man.title}}</div>
+                        <img src="https://i.ibb.co/gbLJf9rx/fbeef3a83e94936ec1f6618ad161383df60073d51698b4ceb498576809aee8cb.png" alt="Hombre con estilo boho chic" style="width:100%; height:auto; border-radius:8px;" />
+                        <div class="boarding-pass__event-title"><strong>{{$t.Params.which.man.subtitle}}</strong></div>
+                        <center>
+                            <strong>¿Qué usar?</strong>
+                            <span class="boarding-pass__label">{{ replace $t.Params.which.man.desc "\n" "<br>" | safeHTML }}</span>
+                            <strong>Referencias</strong>
+                            <span class="boarding-pass__label">{{ replace $t.Params.which.man.refs "\n" "<br>" | safeHTML }}</span>
+                        </center>
+                    </div>
                 </div>
             </div>
         </div>
@@ -325,6 +334,18 @@
         const modal = document.getElementById('bankModal');
         if (event.target == modal) {
             closeBankModal();
+        }
+    }
+
+    function toggleDressCode() {
+        var details = document.getElementById('dresscode-details');
+        var btn = document.getElementById('toggle-dresscode');
+        if (details.style.display === 'none') {
+            details.style.display = 'block';
+            btn.textContent = 'Ocultar detalles';
+        } else {
+            details.style.display = 'none';
+            btn.textContent = '¿Quieres saber más?';
         }
     }
     </script>
