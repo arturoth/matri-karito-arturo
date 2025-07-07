@@ -85,6 +85,10 @@ html {
   letter-spacing: 2px;
 }
 
+#order-of-events {
+  background-color: #E4E2DD;
+}
+
 .header-svg {
   max-width: 350px;
   width: 100%;
@@ -959,5 +963,14 @@ figcaption {
     border: 1px solid #7C9151;
     margin-bottom: 1rem;
     box-sizing: border-box;
+  }
+  .section--svg-full {
+    width: 100vw;
+    max-width: 100vw;
+    background: #E4E2DD !important;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
   }
 }
