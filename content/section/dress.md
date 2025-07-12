@@ -7,7 +7,7 @@ description: "Este estilo combina elementos bohemios, naturales y artesanales, p
 which:
   man:
     title: "Hombre"
-    img: "https://i.ibb.co/RGZj8mXg/8284cb1066705328ac3bafa40001155b52d472a74c0f07ec161e0b84000fe920.png"
+    img: "https://i.ibb.co/gbLJf9rx/fbeef3a83e94936ec1f6618ad161383df60073d51698b4ceb498576809aee8cb.png"
     subtitle: "Tipo de vestimenta"
     desc: "<strong>Descripción del outfit masculino</strong>\n 
 	•	Camisa de lino en blanco/crema, ligeramente holgada para el estilo boho, pero con corte refinado.\n
@@ -20,7 +20,7 @@ which:
 	•	<a href=\"https://shop.mango.com/\">Mango Man – Smart Casual</a>"
   girl:
     title: "Mujer"
-    img: "https://i.ibb.co/gbLJf9rx/fbeef3a83e94936ec1f6618ad161383df60073d51698b4ceb498576809aee8cb.png"
+    img: "https://i.ibb.co/RGZj8mXg/8284cb1066705328ac3bafa40001155b52d472a74c0f07ec161e0b84000fe920.png"
     subtitle: "Tipo de vestimenta"
     desc: "	•	<strong>Vestido midi fluido o largo:</strong> preferencia por tejidos sueltos, vaporosos (gasa, lino, muselina).\n
 	•	<strong>Colores:</strong> (Recomendación) tonos tierra claros (arena, salmón, terracota suave, crema), pasteles apagados o estampados florales chicos.\n
