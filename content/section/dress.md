@@ -7,13 +7,13 @@ description: "Este estilo combina elementos bohemios, naturales y artesanales, p
 which:
   man:
     title: "Hombre"
-    img: "https://i.ibb.co/gbLJf9rx/fbeef3a83e94936ec1f6618ad161383df60073d51698b4ceb498576809aee8cb.png"
+    img: "https://i.ibb.co/7tD8J5Wd/7e206e2a6e7b96fa578a188aa977c9e1c7ddf8b26d5e57a7f38e35f5c068fdeb.png"
     subtitle: "Tipo de vestimenta"
     desc: "<strong>Descripción del outfit masculino</strong>\n 
-	•	Camisa de lino en blanco/crema, ligeramente holgada para el estilo boho, pero con corte refinado.\n
-	•	Pantalón de vestir en tonos tierra (camel, verde oliva), sin ser informal como un jeans.\n
+	•	Camisa de colores blancos, palidos. Puede ser ligeramente holgada para el estilo boho, pero con corte refinado.\n
+	•	Pantalón de vestir, sin ser informal como un jeans.\n
 	<strong>Accesorios</strong>\n 
-  •	Cinturón de cuero suave y mocasines o slingback para cerrar el look con elegancia relajada.\n"
+  •	Cinturón de cuero suave, zapatos para cerrar el look con elegancia.\n"
     refs: "<strong>👨 Hombres</strong>\n
 	•	<a href=\"https://www.asos.com/men/\">Asos Men – Boho Looks</a>\n
 	•	<a href=\"https://www.zara.com/\">Zara Men – Linen & Earth Tones</a>\n
